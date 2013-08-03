@@ -1,0 +1,136 @@
+{ 
+  "apiVersion" : "0.1",
+  "apis" : 
+    [ { "description" : "example with path input",
+        "path" : "/generated/path/{pathinput}",
+        "operations" : 
+          [ { "httpMethod" : "GET",
+              "nickname" : "path",
+              "parameters" : 
+                [ { 
+                    "paramType" : "path",
+                    "name" : "pathinput",
+                    "dataType" : "int",
+                    "description" : "some input",
+                    "required" : true,
+                    "allowMultiple": false
+                  }
+                ],
+              "responseClass" : "ComplexType",
+              "summary" : "run a GET with an integer in the path",
+              "errorResponses":[
+  				{"code": 400,"reason": "Bad Request"},
+  				{"code": 401,"reason": "Unauthorized"},
+  				{"code": 403,"reason": "Forbidden"},
+  				{"code": 404,"reason": "Not Found"},
+  				{"code": 405,"reason": "Method Not Allowed"},
+  				{"code": 408,"reason": "Request Timeout"},
+  				{"code": 415,"reason": "Unsupported Media Type"},
+  				{"code": 424,"reason": "Method Failure"},
+  				{"code": 500,"reason": "Internal Server Error"},
+  				{"code": 501,"reason": "Not Implemented"},
+  				{"code": 502,"reason": "Bad Gateway"},
+  				{"code": 503,"reason": "Service Unavailable"},
+  				{"code": 504,"reason": "Gateway Timeout"}
+			  ]
+            }
+          ]
+      },
+      { "description" : "example with param input",
+        "path" : "/generated/param",
+        "operations" : 
+          [ { "httpMethod" : "GET",
+              "nickname" : "param",
+              "parameters" : 
+                [ { 
+                    "paramType" : "query",
+                    "name" : "queryinput",
+                    "dataType" : "int",
+                    "description" : "some input",
+                    "required" : true,
+                    "allowMultiple": false
+                  }
+                ],
+              "responseClass" : "ComplexType",
+              "summary" : "run a GET with ?queryinput=string",
+              "errorResponses":[
+  				{"code": 400,"reason": "Bad Request"},
+  				{"code": 401,"reason": "Unauthorized"},
+  				{"code": 403,"reason": "Forbidden"},
+  				{"code": 404,"reason": "Not Found"},
+  				{"code": 405,"reason": "Method Not Allowed"},
+  				{"code": 408,"reason": "Request Timeout"},
+  				{"code": 415,"reason": "Unsupported Media Type"},
+  				{"code": 424,"reason": "Method Failure"},
+  				{"code": 500,"reason": "Internal Server Error"},
+  				{"code": 501,"reason": "Not Implemented"},
+  				{"code": 502,"reason": "Bad Gateway"},
+  				{"code": 503,"reason": "Service Unavailable"},
+  				{"code": 504,"reason": "Gateway Timeout"}
+			  ]
+            }
+          ]
+      },
+      { "description" : "example with body input",
+        "path" : "/generated/body",
+        "operations" : 
+          [ { "httpMethod" : "POST",
+              "nickname" : "body",
+              "parameters" : 
+                [ { 
+                    "paramType" : "body",
+                    "name" : "bodyinput",
+                    "dataType" : "ComplexType",
+                    "description" : "some input",
+                    "required" : true,
+                    "allowMultiple": false
+                  }
+                ],
+              "responseClass" : "boolean",
+              "summary" : "POSTing will use the body as an input object",
+              "errorResponses":[
+  				{"code": 400,"reason": "Bad Request"},
+  				{"code": 401,"reason": "Unauthorized"},
+  				{"code": 403,"reason": "Forbidden"},
+  				{"code": 404,"reason": "Not Found"},
+  				{"code": 405,"reason": "Method Not Allowed"},
+  				{"code": 408,"reason": "Request Timeout"},
+  				{"code": 415,"reason": "Unsupported Media Type"},
+  				{"code": 424,"reason": "Method Failure"},
+  				{"code": 500,"reason": "Internal Server Error"},
+  				{"code": 501,"reason": "Not Implemented"},
+  				{"code": 502,"reason": "Bad Gateway"},
+  				{"code": 503,"reason": "Service Unavailable"},
+  				{"code": 504,"reason": "Gateway Timeout"}
+			  ]
+            }
+          ]
+      }
+    ],
+    "basePath" : ".",
+  "resourcePath" : "/mySwaggerController.json",
+  "swaggerVersion" : "1.1",
+  "models" : 
+  { "ComplexType" :
+    { "id": "ComplexType",
+      "properties" :
+      { "prop1" :
+        { "type" : "string" },
+        
+        "prop2" :
+        { "type" : "int" },
+        
+        "prop3" :
+        { "type" : "boolean" },
+        
+        "prop4" :
+        { "type" : "float" },
+        
+        "prop5" :
+        { "type" : "Array",
+          "items" : { "$ref" : "string" }
+        }
+      }
+    }
+  }
+}

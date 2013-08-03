@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<!-- Appenders -->
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="appfile" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="${catalina.home}/logs/rot13svc.log" />
+		<param name="maxFileSize" value="100KB" />
+		<param name="maxBackupIndex" value="100" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p %d %-20c [%L] - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="flume" class="org.cirrostratus.sequoia.structuredlogging.log4j.FlumeLog4jAppender">
+		<param name="Hostname" value="localhost" />
+		<param name="Port" value="41414" />
+		<param name="file" value="${catalina.home}/logs/flume_failstore.log" />
+	</appender>
+	
+	<!-- Application Loggers -->
+	<logger name="org.cirrostratus" additivity="true">
+		<level value="info" />
+		<appender-ref ref="appfile" />
+		<appender-ref ref="flume" />
+	</logger>
+	
+	<!-- 3rdparty Loggers -->
+	<logger name="org.springframework.core">
+		<level value="info" />
+	</logger>
+	
+	<logger name="org.springframework.beans">
+		<level value="info" />
+	</logger>
+	
+	<logger name="org.springframework.context">
+		<level value="info" />
+	</logger>
+
+	<logger name="org.springframework.http">
+		<level value="info" />
+	</logger>
+
+	<logger name="org.springframework.web">
+		<level value="info" />
+	</logger>
+
+	<!-- Root Logger -->
+	<root>
+		<priority value="warn" />
+		<appender-ref ref="console" />
+	</root>
+	
+</log4j:configuration>
