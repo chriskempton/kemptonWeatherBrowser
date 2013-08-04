@@ -56,55 +56,33 @@ public class MyController implements WatchableListener {
 	
 	@RequestMapping(value="/xml/{input}", method={RequestMethod.GET})
 	public ModelAndView xmlOutput(@PathVariable("input") String input) {
-		String error = "";
-		Forecasts temps = new Forecasts();
-		try {
-			temps.init(input);
-		} catch (Exception e) {
-			error = "Sorry, an error occurred.<br/>" + e.getStackTrace().toString();
-		}
-		
-		Map<String, Object> model = new HashMap<String,Object>();
-		model.put("forecasts", temps.getItems());
-		model.put("error", error);
-		model.put("input", input);
-		
-		return new ModelAndView("xml", model);
+		return new ModelAndView("xml", getModelMap(input));
 	}
 	
 	@RequestMapping(value="/json/{input}", method={RequestMethod.GET})
 	public ModelAndView jsonOutput(@PathVariable("input") String input) {
-		String error = "";
-		Forecasts temps = new Forecasts();
-		try {
-			temps.init(input);
-		} catch (Exception e) {
-			error = "Sorry, an error occurred.<br/>" + e.getMessage();
-		}
-		
-		Map<String, Object> model = new HashMap<String,Object>();
-		model.put("forecasts", temps.getItems());
-		model.put("error", error);
-		model.put("input", input);
-		
-		return new ModelAndView("json", model);
+		return new ModelAndView("json", getModelMap(input));
 	}
 	
 	@RequestMapping(value="/htmltable/{input}", method={RequestMethod.GET})
 	public ModelAndView htmlOutput(@PathVariable("input") String input) {
+		return new ModelAndView("htmltable", getModelMap(input));
+	}	
+	
+	private static Map<String, Object> getModelMap(String input) {
 		String error = "";
-		Forecasts temps = new Forecasts();
+		Forecasts forecastsContainer = new Forecasts();
 		try {
-			temps.init(input);
+			forecastsContainer.populate(input);
 		} catch (Exception e) {
 			error = "Sorry, an error occurred.<br/>" + e.getStackTrace().toString();
 		}
 		
 		Map<String, Object> model = new HashMap<String,Object>();
-		model.put("forecasts", temps.getItems());
+		model.put("forecasts", forecastsContainer.getItems());
 		model.put("error", error);
 		model.put("input", input);
 		
-		return new ModelAndView("htmltable", model);
-	}	
+		return model;
+	}
 }

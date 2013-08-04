@@ -32,7 +32,7 @@ public class Forecasts {
 		this.items = items;
 	}
 	
-	public void init(String input) {
+	public void populate(String input) {
 		List<String> dates = new ArrayList<String>();
 		List<String> min = new ArrayList<String>();
 		List<String> max = new ArrayList<String>();
