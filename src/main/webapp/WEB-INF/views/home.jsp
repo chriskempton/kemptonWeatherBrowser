@@ -2,19 +2,19 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>MyWebapp</title>
+	<title>Kempton Weather Browser</title>
 	<link href="<c:url value="/resources/form.css" />" rel="stylesheet"  type="text/css" />		
 </head>
 <body>
-<h1><a href="<c:url value="/" />">MyWebapp</a></h1>
+<h1><a href="<c:url value="/" />">Kempton Weather Browser</a></h1>
 <p>Hello World!</p>
 <br>
-Check out these links:
+Get the next 7 days' temperature forecasts...
 <br>
-<a href="<c:url value="/example/simple/3" />">simple with 3 as input</a>
+<a href="<c:url value="/forecasts/htmltable/48103" />">as an HTML table</a>
 <br>
-<a href="<c:url value="/example/view/5" />">view with 5 as input</a>
+<a href="<c:url value="/forecasts/xml/48103" />">as a JSON array</a>
 <br>
-<a href="<c:url value="/example/asynchronous/2147483647" />">asynchronous with INT_MAX as input</a>
+<a href="<c:url value="/forecasts/json/48103" />">as an XML document</a>
 </body>
 </html>

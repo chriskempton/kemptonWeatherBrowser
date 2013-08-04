@@ -2,22 +2,22 @@
   "apiVersion" : "0.1",
   "apis" : 
     [ { "description" : "example with path input",
-        "path" : "/generated/path/{pathinput}",
+        "path" : "/forecasts/htmltable/{input}",
         "operations" : 
           [ { "httpMethod" : "GET",
-              "nickname" : "path",
+              "nickname" : "htmltable",
               "parameters" : 
                 [ { 
                     "paramType" : "path",
-                    "name" : "pathinput",
-                    "dataType" : "int",
-                    "description" : "some input",
+                    "name" : "input",
+                    "dataType" : "string",
+                    "description" : "ZIP code",
                     "required" : true,
                     "allowMultiple": false
                   }
                 ],
-              "responseClass" : "ComplexType",
-              "summary" : "run a GET with an integer in the path",
+              "responseClass" : "String",
+              "summary" : "Run a GET with ZIP code in the path, get output as HTML page",
               "errorResponses":[
   				{"code": 400,"reason": "Bad Request"},
   				{"code": 401,"reason": "Unauthorized"},
@@ -36,23 +36,23 @@
             }
           ]
       },
-      { "description" : "example with param input",
-        "path" : "/generated/param",
+      { "description" : "example with path input",
+        "path" : "/forecasts/json/{input}",
         "operations" : 
           [ { "httpMethod" : "GET",
-              "nickname" : "param",
+              "nickname" : "json",
               "parameters" : 
                 [ { 
-                    "paramType" : "query",
-                    "name" : "queryinput",
-                    "dataType" : "int",
-                    "description" : "some input",
+                    "paramType" : "path",
+                    "name" : "input",
+                    "dataType" : "string",
+                    "description" : "ZIP code",
                     "required" : true,
                     "allowMultiple": false
                   }
                 ],
-              "responseClass" : "ComplexType",
-              "summary" : "run a GET with ?queryinput=string",
+              "responseClass" : "String",
+              "summary" : "Run a GET with ZIP code in the path, get output as JSON array",
               "errorResponses":[
   				{"code": 400,"reason": "Bad Request"},
   				{"code": 401,"reason": "Unauthorized"},
@@ -71,23 +71,23 @@
             }
           ]
       },
-      { "description" : "example with body input",
-        "path" : "/generated/body",
+      { "description" : "example with path input",
+        "path" : "/forecasts/xml/{input}",
         "operations" : 
-          [ { "httpMethod" : "POST",
-              "nickname" : "body",
+          [ { "httpMethod" : "GET",
+              "nickname" : "xml",
               "parameters" : 
                 [ { 
-                    "paramType" : "body",
-                    "name" : "bodyinput",
-                    "dataType" : "ComplexType",
-                    "description" : "some input",
+                    "paramType" : "path",
+                    "name" : "input",
+                    "dataType" : "string",
+                    "description" : "ZIP code",
                     "required" : true,
                     "allowMultiple": false
                   }
                 ],
-              "responseClass" : "boolean",
-              "summary" : "POSTing will use the body as an input object",
+              "responseClass" : "String",
+              "summary" : "Run a GET with ZIP code in the path, get output as XML document",
               "errorResponses":[
   				{"code": 400,"reason": "Bad Request"},
   				{"code": 401,"reason": "Unauthorized"},
@@ -111,25 +111,17 @@
   "resourcePath" : "/mySwaggerController.json",
   "swaggerVersion" : "1.1",
   "models" : 
-  { "ComplexType" :
-    { "id": "ComplexType",
+  { "Forecast" :
+    { "id": "Forecast",
       "properties" :
-      { "prop1" :
+      { "date" :
         { "type" : "string" },
         
-        "prop2" :
-        { "type" : "int" },
+        "high" :
+        { "type" : "string" },
         
-        "prop3" :
-        { "type" : "boolean" },
-        
-        "prop4" :
-        { "type" : "float" },
-        
-        "prop5" :
-        { "type" : "Array",
-          "items" : { "$ref" : "string" }
-        }
+        "low" :
+        { "type" : "string" },
       }
     }
   }

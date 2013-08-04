@@ -1,0 +1,3 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %><%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %><%@ page session="false" %><%@ page language="java" contentType="application/json; charset=UTF-8" pageEncoding="UTF-8"%><c:choose><c:when test="${fn:length(error) gt 0}"><error>${error}</error></c:when><c:otherwise>[<c:forEach var="forecast" items="${forecasts}">{"date":"${forecast.date}","high":"${forecast.high}","low":"${forecast.low}"},</c:forEach>{}]
+</c:otherwise>
+</c:choose>

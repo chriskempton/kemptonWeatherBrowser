@@ -1,6 +1,6 @@
 package kemptonfarms.org.model;
 
-class Forecast {
+public class Forecast {
 	private String date;
 	private String high;
 	private String low;
