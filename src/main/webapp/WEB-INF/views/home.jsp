@@ -13,8 +13,8 @@ Get the next 7 days' temperature forecasts...
 <br>
 <a href="<c:url value="/forecasts/htmltable/48103" />">as an HTML table</a>
 <br>
-<a href="<c:url value="/forecasts/xml/48103" />">as a JSON array</a>
+<a href="<c:url value="/forecasts/json/48103" />">as a JSON array</a>
 <br>
-<a href="<c:url value="/forecasts/json/48103" />">as an XML document</a>
+<a href="<c:url value="/forecasts/xml/48103" />">as an XML document</a>
 </body>
 </html>
