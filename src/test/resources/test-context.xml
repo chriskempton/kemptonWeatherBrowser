@@ -22,7 +22,7 @@
 	<import resource="classpath*:META-INF/spring/*.xml" />
 	
 	<!-- Instantiating your controller in the test environment will look like this 
-	<bean class="kemptonfarms.org.controller.MyController" /> -->
+	<bean class="kemptonfarms.org.controller.OutputController" /> -->
 	<bean class="kemptonfarms.org.controller.HealthCheckController" />
 	<bean name="executorService" class="java.util.concurrent.Executors" factory-method="newCachedThreadPool" />
 	

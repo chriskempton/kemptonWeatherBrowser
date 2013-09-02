@@ -1,42 +1,7 @@
 { 
   "apiVersion" : "0.1",
   "apis" : 
-    [ { "description" : "example with path input",
-        "path" : "/forecasts/htmltable/{input}",
-        "operations" : 
-          [ { "httpMethod" : "GET",
-              "nickname" : "htmltable",
-              "parameters" : 
-                [ { 
-                    "paramType" : "path",
-                    "name" : "input",
-                    "dataType" : "string",
-                    "description" : "ZIP code",
-                    "required" : true,
-                    "allowMultiple": false
-                  }
-                ],
-              "responseClass" : "String",
-              "summary" : "Run a GET with ZIP code in the path, get output as HTML page",
-              "errorResponses":[
-  				{"code": 400,"reason": "Bad Request"},
-  				{"code": 401,"reason": "Unauthorized"},
-  				{"code": 403,"reason": "Forbidden"},
-  				{"code": 404,"reason": "Not Found"},
-  				{"code": 405,"reason": "Method Not Allowed"},
-  				{"code": 408,"reason": "Request Timeout"},
-  				{"code": 415,"reason": "Unsupported Media Type"},
-  				{"code": 424,"reason": "Method Failure"},
-  				{"code": 500,"reason": "Internal Server Error"},
-  				{"code": 501,"reason": "Not Implemented"},
-  				{"code": 502,"reason": "Bad Gateway"},
-  				{"code": 503,"reason": "Service Unavailable"},
-  				{"code": 504,"reason": "Gateway Timeout"}
-			  ]
-            }
-          ]
-      },
-      { "description" : "example with path input",
+    [ { "description" : "Run a GET with ZIP code in the path, get output as JSON array",
         "path" : "/forecasts/json/{input}",
         "operations" : 
           [ { "httpMethod" : "GET",
@@ -51,43 +16,8 @@
                     "allowMultiple": false
                   }
                 ],
-              "responseClass" : "String",
+              "responseClass" : "Forecasts",
               "summary" : "Run a GET with ZIP code in the path, get output as JSON array",
-              "errorResponses":[
-  				{"code": 400,"reason": "Bad Request"},
-  				{"code": 401,"reason": "Unauthorized"},
-  				{"code": 403,"reason": "Forbidden"},
-  				{"code": 404,"reason": "Not Found"},
-  				{"code": 405,"reason": "Method Not Allowed"},
-  				{"code": 408,"reason": "Request Timeout"},
-  				{"code": 415,"reason": "Unsupported Media Type"},
-  				{"code": 424,"reason": "Method Failure"},
-  				{"code": 500,"reason": "Internal Server Error"},
-  				{"code": 501,"reason": "Not Implemented"},
-  				{"code": 502,"reason": "Bad Gateway"},
-  				{"code": 503,"reason": "Service Unavailable"},
-  				{"code": 504,"reason": "Gateway Timeout"}
-			  ]
-            }
-          ]
-      },
-      { "description" : "example with path input",
-        "path" : "/forecasts/xml/{input}",
-        "operations" : 
-          [ { "httpMethod" : "GET",
-              "nickname" : "xml",
-              "parameters" : 
-                [ { 
-                    "paramType" : "path",
-                    "name" : "input",
-                    "dataType" : "string",
-                    "description" : "ZIP code",
-                    "required" : true,
-                    "allowMultiple": false
-                  }
-                ],
-              "responseClass" : "String",
-              "summary" : "Run a GET with ZIP code in the path, get output as XML document",
               "errorResponses":[
   				{"code": 400,"reason": "Bad Request"},
   				{"code": 401,"reason": "Unauthorized"},

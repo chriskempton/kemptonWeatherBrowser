@@ -24,9 +24,9 @@ import org.springframework.web.servlet.ModelAndView;
 import kemptonfarms.org.model.*;
 
 @Controller
-@RequestMapping("/forecasts")
-public class MyController implements WatchableListener {
-	static final StructuredLogger logger = StructuredLoggerFactory.getLogger(MyController.class, DestinationCategory.DEVELOPMENT);
+@RequestMapping("/output")
+public class OutputController implements WatchableListener {
+	static final StructuredLogger logger = StructuredLoggerFactory.getLogger(OutputController.class, DestinationCategory.DEVELOPMENT);
 	
 //	private MyServiceWrapper msw;
 //	@Autowired
@@ -57,11 +57,6 @@ public class MyController implements WatchableListener {
 	@RequestMapping(value="/xml/{input}", method={RequestMethod.GET})
 	public ModelAndView xmlOutput(@PathVariable("input") String input) {
 		return new ModelAndView("xml", getModelMap(input));
-	}
-	
-	@RequestMapping(value="/json/{input}", method={RequestMethod.GET})
-	public ModelAndView jsonOutput(@PathVariable("input") String input) {
-		return new ModelAndView("json", getModelMap(input));
 	}
 	
 	@RequestMapping(value="/htmltable/{input}", method={RequestMethod.GET})
