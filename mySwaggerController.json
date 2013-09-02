@@ -121,7 +121,7 @@
         { "type" : "string" },
         
         "low" :
-        { "type" : "string" },
+        { "type" : "string" }
       }
     }
   }
