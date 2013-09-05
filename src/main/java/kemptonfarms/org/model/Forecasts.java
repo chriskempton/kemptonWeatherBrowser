@@ -33,6 +33,9 @@ public class Forecasts {
 	}
 	
 	public void populate(String input) {
+		if(input == null || input.length() < 1) {
+			return;
+		}
 		List<String> dates = new ArrayList<String>();
 		List<String> min = new ArrayList<String>();
 		List<String> max = new ArrayList<String>();
@@ -58,7 +61,8 @@ public class Forecasts {
 			}
 		}
 		int i = 0;
-		while (i < 7) {
+		int dayRecordCount = Math.min(dates.size(), Math.min(max.size(), min.size()));
+		while (i < dayRecordCount) {
 			Forecast line = new Forecast();
 			line.setDate(dates.get(i));
 			line.setHigh(max.get(i));
@@ -69,9 +73,15 @@ public class Forecasts {
 	}
 
 	protected Dwml getDwml(String zip){
-		Client client = Client.create();
-		WebResource webResource = client.resource(String.format(weatherUrl, zip));
-		ClientResponse response = webResource.accept(MediaType.APPLICATION_XML).get(ClientResponse.class);
-		return response.getEntity(Dwml.class);
+		try {
+			Client client = Client.create();
+			WebResource webResource = client.resource(String.format(weatherUrl, zip));
+			ClientResponse response = webResource.accept(MediaType.APPLICATION_XML).get(ClientResponse.class);
+			return response.getEntity(Dwml.class);
+		} catch (Exception e) {
+			// If any exceptions result while getting the data from NOAA, return an empty Dwml object
+			// TODO Report errors to client
+			return new Dwml();
+		}
 	}
 }
