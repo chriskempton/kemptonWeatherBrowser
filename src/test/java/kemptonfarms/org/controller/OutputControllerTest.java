@@ -22,6 +22,7 @@ public class OutputControllerTest {
 
 	private MockHttpServletRequest request;
 	private MockHttpServletResponse response;
+	String input = "48103";
 
 	private OutputController OutputController;
 	public void setOutputController(OutputController c){
@@ -37,19 +38,36 @@ public class OutputControllerTest {
 	
 	@Test
 	public void testOutputControllerHTML() {
-		ModelAndView mv = OutputController.htmlOutput("48103");
+		ModelAndView mv = OutputController.htmlOutput(input);
+
+		assertTrue(mv.getViewName().equals("htmltable"));
+
 		assertNotNull(mv.getModel().get("forecasts"));
 		assertTrue(mv.getModel().get("forecasts") instanceof List);
 		List<Forecast> forecasts = (List<Forecast>)mv.getModel().get("forecasts");
-		assertTrue(forecasts.size() == 7);
+		
+		// Depending on time of day, the service will return 6 or 7 complete Forecasts
+		assertTrue(forecasts.size() > 5);
+		assertTrue(forecasts.size() < 8);
+		
+		assertTrue(mv.getModel().get("input").equals(input));
 	}
 	
 	@Test
 	public void testOutputControllerXML() {
-		ModelAndView mv = OutputController.xmlOutput("48103");
+		ModelAndView mv = OutputController.xmlOutput(input);
+		
+		assertTrue(mv.getViewName().equals("xml"));
+		
 		assertNotNull(mv.getModel().get("forecasts"));
 		assertTrue(mv.getModel().get("forecasts") instanceof List);
 		List<Forecast> forecasts = (List<Forecast>)mv.getModel().get("forecasts");
-		assertTrue(forecasts.size() == 7);
+		
+		// Depending on time of day, the service will return 6 or 7 complete Forecasts
+		assertTrue(forecasts.size() > 5);
+		assertTrue(forecasts.size() < 8);
+		
+		assertTrue(mv.getModel().get("input").equals(input));
 	}
+
 }
