@@ -34,6 +34,11 @@ local.properties
 .LSOverride
 Icon
 
+### IntelliJ ###
+*.iml
+*.ipr
+*.iws
+.idea/
 
 # Thumbnails
 ._*
