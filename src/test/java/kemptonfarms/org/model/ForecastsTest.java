@@ -16,6 +16,7 @@ public class ForecastsTest {
 	
 	@Test
 	public void testPopulateRealZIP() {
+        // TODO Mock the NOAA data lookup which takes place inside Forecasts.populate()
 		// Try Ann Arbor ZIP
 		theForecasts.populate("48104");
 		
@@ -34,14 +35,14 @@ public class ForecastsTest {
 	
 	@Test
 	public void testPopulateNonsenseZIP() {
-		// Try empty ZIP input
+		// Try nonexistent ZIP input
 		theForecasts.populate("Chris");
 		assertTrue(theForecasts.getItems().size() == 0);
 	}
 	
 	@Test
 	public void testPopulateNullZIP() {
-		// Try empty ZIP input
+		// Try null ZIP input
 		theForecasts.populate(null);
 		assertTrue(theForecasts.getItems().size() == 0);
 	}
