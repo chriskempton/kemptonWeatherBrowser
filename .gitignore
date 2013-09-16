@@ -64,3 +64,5 @@ Session.vim
 *.jar
 *.war
 *.ear
+
+*.iml
